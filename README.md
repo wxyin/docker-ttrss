@@ -20,7 +20,7 @@ while feeling as close to a real desktop application as possible.
 This section assumes you want to get started quickly, the following sections explain the
 steps in more detail. So let's start.
 
-Add your nginx.key and nginx.crt to the build directory and replace "your_domain" in ttrss.nginx.conf with your domain.
+Firstly, add your nginx.key and nginx.crt to the build directory and replace "your_domain" in ttrss.nginx.conf with your domain.
 
 Just start up a new database container:
 
