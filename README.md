@@ -15,12 +15,14 @@ while feeling as close to a real desktop application as possible.
 
 ![](http://tt-rss.org/images/1.9/1.jpg)
 
+##Certificate and Domain Setup
+
+Add your nginx.key and nginx.crt to the build directory and replace "your_domain" in ttrss.nginx.conf with your domain.
+
 ## Quickstart
 
 This section assumes you want to get started quickly, the following sections explain the
 steps in more detail. So let's start.
-
-Firstly, add your nginx.key and nginx.crt to the build directory and replace "your_domain" in ttrss.nginx.conf with your domain.
 
 Just start up a new database container:
 
