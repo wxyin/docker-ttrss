@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER Christian Lück <christian@lueck.tv>
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-  nginx supervisor php5-fpm php5-cli php5-curl php5-gd php5-json \
+  nginx git supervisor php5-fpm php5-cli php5-curl php5-gd php5-json \
   php5-pgsql php5-mysql php5-mcrypt && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # enable the mcrypt module
