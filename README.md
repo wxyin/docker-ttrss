@@ -18,6 +18,11 @@ while feeling as close to a real desktop application as possible.
 ##Certificate and Domain Setup
 
 Add your nginx.key and nginx.crt to the build directory and replace "your_domain" in ttrss.nginx.conf with your domain.
+You can create it within the build directory with:
+
+```bash
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
+```bash
 
 ## Quickstart
 
