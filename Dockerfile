@@ -21,8 +21,7 @@ RUN rm /etc/nginx/sites-enabled/default
 # install ttrss and patch configuration
 WORKDIR /var/www
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y curl --no-install-recommends && rm -rf /var/lib/apt/lists/* \
-    && curl -SL https://tt-rss.org/gitlab/fox/tt-rss/repository/archive.tar.gz?ref=master | tar xzC /var/www --strip-components 1 \
-    && apt-get purge -y --auto-remove curl 
+    && curl -SL https://tt-rss.org/gitlab/fox/tt-rss/repository/archive.tar.gz?ref=master | tar xzC /var/www --strip-components 1 
     
 RUN cp config.php-dist config.php
 
@@ -38,7 +37,8 @@ RUN git clone https://github.com/dasmurphy/tinytinyrss-fever-plugin.git
 RUN cp -r /tmp/tinytinyrss-fever-plugin/fever/ /var/www/plugins/
 RUN rm -rf /tmp/tinytinyrss-fever-plugin
 
-RUN apt-get purge -y git
+RUN apt-get purge -y git \
+    && apt-get purge -y --auto-remove curl 
 
 RUN chown www-data:www-data -R /var/www
 
