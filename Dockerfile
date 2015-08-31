@@ -26,6 +26,18 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y curl --n
     && chown www-data:www-data -R /var/www
 RUN cp config.php-dist config.php
 
+#add reeder theme
+WORKDIR /tmp
+RUN git clone https://github.com/tschinz/tt-rss_reeder_theme.git
+RUN cp /tmp/tt-rss_reeder_theme/reeder.css /var/www/themes/
+RUN cp -r /tmp/tt-rss_reeder_theme/reeder/ /var/www/themes/
+RUN rm -rf /tmp/tt-rss_reeder_theme
+
+#add fever plugin
+RUN git clone https://github.com/dasmurphy/tinytinyrss-fever-plugin.git
+RUN cp -r /tmp/tinytinyrss-fever-plugin/fever/ /var/www/plugins/
+RUN rm -rf /tmp/tinytinyrss-fever-plugin
+
 # expose only nginx HTTP port
 EXPOSE 443
 
