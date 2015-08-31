@@ -8,6 +8,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
 # enable the mcrypt module
 RUN php5enmod mcrypt
 
+#add ssl cerficate
+RUN mkdir /etc/nginx/ssl
+ADD nginx.key /etc/nginx/ssl/nginx.key
+ADD nginx.crt /etc/nginx/ssl/nginx.crt
+
 # add ttrss as the only nginx site
 ADD ttrss.nginx.conf /etc/nginx/sites-available/ttrss
 RUN ln -s /etc/nginx/sites-available/ttrss /etc/nginx/sites-enabled/ttrss
@@ -22,7 +27,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y curl --n
 RUN cp config.php-dist config.php
 
 # expose only nginx HTTP port
-EXPOSE 80
+EXPOSE 443
 
 # complete path to ttrss
 ENV SELF_URL_PATH http://localhost
